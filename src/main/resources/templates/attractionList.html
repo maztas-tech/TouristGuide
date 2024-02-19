@@ -1,40 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link th:href="@{/main.css}" rel="stylesheet">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link th:href="@{/main.css}" rel="stylesheet">
+    </head>
+    <body>
 
-<table>
-    <caption>
-        Tourist attractions in Denmark
-    </caption>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Tags</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="attraction : ${attractions}">
-            <td th:text="${attraction.name}">Attraction name</td>
-            <td th:text="${attraction.description}">Attraction description</td>
-            <td>
-                <a th:href="@{'attractions/' + ${attraction.name} + '/tags'}">
-                    <input type="button" value="Tags">
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-<input type="button" value="Add attraction">
-
-
-
-
-</body>
+        <article>
+            <table>
+                <caption>
+                    Tourist attractions in Denmark
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Tags</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="attraction : ${attractions}">
+                        <td th:text="${attraction.name}">Attraction name</td>
+                        <td th:text="${attraction.description}">Attraction description</td>
+                        <td>
+                            <a th:href="@{'attractions/' + ${attraction.name} + '/tags'}">
+                                <input type="button" value="Tags">
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="button" value="Add attraction">
+        </article>
+    </body>
 </html>
