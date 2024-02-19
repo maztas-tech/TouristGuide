@@ -11,15 +11,32 @@ import java.util.List;
 public class TouristRepository {
 
     private List<TouristAttraction> touristAttractionList = new ArrayList<>(List.of(
-            new TouristAttraction("SMK", "Statens Museum for kunst"),
-            new TouristAttraction("Odense Zoo", "Verdens bedste zoo"),
-            new TouristAttraction("Rundetårn", "Oversigt over København"),
-            new TouristAttraction("Tivoli", "Københavns øjesten")
+            new TouristAttraction("SMK", "Statens Museum for kunst", List.of(
+                    "Historie", "Kunst", "Litteratur"
+            )),
+            new TouristAttraction("Odense Zoo", "Verdens bedste zoo", List.of(
+                    "Pingviner", "Isbjørn", "Ulve"
+            )),
+            new TouristAttraction("Rundetårn", "Oversigt over København", List.of(
+                    "Udsigt", "København", "Historie"
+            )),
+            new TouristAttraction("Tivoli", "Københavns øjesten", List.of(
+                    "Restaurant", "Forlystelser", "Fyreværkeri"
+            ))
 
     ));
 
     public List<TouristAttraction> getTouristAttractionList(){
         return touristAttractionList;
+    }
+
+    public List<String> attractionTagsList(String touristAttractionName){
+        for (TouristAttraction touristAttraction : touristAttractionList){
+            if (touristAttraction.getName().contains(touristAttractionName)){
+                return touristAttraction.getTagsList();
+            }
+        }
+        return null;
     }
 
 

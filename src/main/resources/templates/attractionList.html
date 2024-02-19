@@ -23,13 +23,14 @@
             <td th:text="${attraction.name}">Attraction name</td>
             <td th:text="${attraction.description}">Attraction description</td>
             <td>
-                <a th:href="@{attractions/tags.html}">
+                <a th:href="@{'attractions/' + ${attraction.name} + '/tags'}">
                     <input type="button" value="Tags">
                 </a>
             </td>
         </tr>
     </tbody>
 </table>
+
 <input type="button" value="Add attraction">
 
 

@@ -6,7 +6,21 @@
     <link th:href="@{/main.css}" rel="stylesheet">
 </head>
 <body>
-<h1>Hello tags!</h1>
-
+<table>
+    <caption>
+        Tags for attraction
+    </caption>
+    <thead>
+        <tr>
+            <th>Tags</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="tag : ${tags}">
+            <td th:text="${tag}"></td>
+        </tr>
+    </tbody>
+</table>
+<a th:href="@{'http://localhost:8080/attractions'}"><input type="button" value="Return to attractions"></a>
 </body>
 </html>
