@@ -28,4 +28,9 @@ public class TouristController {
         return "tags";
     }
 
+    @GetMapping("/add")
+    public String addAttraction(){
+        return "add";
+    }
+
 }
