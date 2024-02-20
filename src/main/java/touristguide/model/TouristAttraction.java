@@ -5,22 +5,25 @@ import java.util.List;
 public class TouristAttraction {
     private String name;
     private String description;
-    private String by;
+    private String city;
     private List<String> tagsList;
 
-    public TouristAttraction(String name, String description, String by ,List<String> tagsList){
+    public TouristAttraction(String name, String description, String city, List<String> tagsList){
         this.name = name;
         this.description = description;
-        this.by = by;
+        this.city = city;
         this.tagsList = tagsList;
     }
+    public TouristAttraction(){
 
-    public String getBy() {
-        return by;
     }
 
-    public void setBy(String by) {
-        this.by = by;
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public List<String> getTagsList() {

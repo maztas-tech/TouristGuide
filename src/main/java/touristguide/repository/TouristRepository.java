@@ -12,7 +12,7 @@ public class TouristRepository {
 
     final private List<String> attractionCities = new ArrayList<>(List.of(
             "København", "Odense", "Aarhus", "Roskilde",
-            "Aarhus", "Aalborg", "Sønderborg"
+            "Aarhus", "Aalborg", "Sønderborg", "Jelling"
     ));
 
     private List<TouristAttraction> touristAttractionList = new ArrayList<>(List.of(

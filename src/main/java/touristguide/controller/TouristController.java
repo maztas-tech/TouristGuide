@@ -2,9 +2,8 @@ package touristguide.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import touristguide.model.TouristAttraction;
 import touristguide.service.TouristService;
 
 @Controller
@@ -29,8 +28,16 @@ public class TouristController {
     }
 
     @GetMapping("/add")
-    public String addAttraction(){
+    public String addAttraction(Model model){
+        model.addAttribute("attractionObject", new TouristAttraction());
+        model.addAttribute("attractionCities", touristService.getAttractionCities());
         return "add";
+    }
+
+    @PostMapping("/add")
+    public String addedAttraction(@ModelAttribute TouristAttraction touristAttraction){
+        touristService.addTouristAttraction(touristAttraction);
+        return "redirect:/attractions";
     }
 
 }
