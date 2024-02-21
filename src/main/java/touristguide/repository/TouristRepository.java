@@ -59,6 +59,16 @@ public class TouristRepository {
         return touristAttractionList;
     }
 
+    public List<TouristAttraction> deleteTouristAttraction(TouristAttraction touristAttraction){
+        for (TouristAttraction attraction: touristAttractionList){
+            if (attraction.getName().contains(touristAttraction.getName())){
+                touristAttractionList.remove(attraction);
+                return touristAttractionList;
+            }
+        }
+        return null;
+    }
+
 
 
 }
