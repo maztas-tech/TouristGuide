@@ -47,4 +47,11 @@ public class TouristController {
         return "redirect:/attractions";
     }
 
+    @GetMapping("/{name}/updateAttraction")
+    public String updateAttration(){
+        return "updateAttraction";
+    }
+
+
+
 }

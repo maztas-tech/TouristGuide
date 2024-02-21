@@ -69,6 +69,17 @@ public class TouristRepository {
         return null;
     }
 
+    public List<TouristAttraction> updateAttraction(String name, String city){
+        for (TouristAttraction attraction: touristAttractionList){
+            if (attraction.getName().contains(name)){
+                attraction.setCity(city);
+            }
+        }
+
+
+        return null;
+    }
+
 
 
 }
