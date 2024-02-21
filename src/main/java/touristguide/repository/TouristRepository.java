@@ -14,6 +14,10 @@ public class TouristRepository {
             "Aarhus", "Aalborg", "Sønderborg", "Jelling", "Randers", "Billund"
     ));
 
+    final private List<String> attractionTags = new ArrayList<>(List.of(
+            "Børnevenlig", "Gratis", "Gebyr", "Kunst", "Natur"
+    ));
+
     private List<TouristAttraction> touristAttractionList = new ArrayList<>(List.of(
             new TouristAttraction("SMK", "Statens Museum for kunst","København",List.of(
                     "Historie", "Kunst", "Litteratur"
@@ -27,7 +31,6 @@ public class TouristRepository {
             new TouristAttraction("Tivoli", "Københavns øjesten", "København",List.of(
                     "Restaurant", "Forlystelser", "Fyreværkeri"
             ))
-
     ));
 
     public List<TouristAttraction> getTouristAttractionList(){
@@ -36,6 +39,10 @@ public class TouristRepository {
 
     public List<String> getAttractionCities(){
         return attractionCities;
+    }
+
+    public List<String> getAttractionTags(){
+        return attractionTags;
     }
 
     public List<String> attractionTagsList(String touristAttractionName){

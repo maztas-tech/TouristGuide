@@ -23,8 +23,10 @@
                         <option th:each="c : ${attractionCities}" th:value="${c}" th:text="${c}"></option>
                 </select>
             </p>
-
-
+            <div th:each="tag : ${attractionTags}">
+                <input id="tagsAttraction" type="checkbox"  th:field="*{tagsList}" th:value="${tag}">
+                <label for="tagsAttraction" th:text="${tag}">Tags:</label><br />
+            </div>
             <input type="submit" value="Add attraction">
         </form>
         <a th:href="@{'http://localhost:8080/attractions'}">

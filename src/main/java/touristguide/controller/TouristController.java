@@ -31,6 +31,7 @@ public class TouristController {
     public String addAttraction(Model model){
         model.addAttribute("attractionObject", new TouristAttraction());
         model.addAttribute("attractionCities", touristService.getAttractionCities());
+        model.addAttribute("attractionTags", touristService.getAttractionTags());
         return "add";
     }
 
