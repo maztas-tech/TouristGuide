@@ -1,6 +1,5 @@
 package touristguide.repository;
 
-import jdk.jfr.Registered;
 import org.springframework.stereotype.Repository;
 import touristguide.model.TouristAttraction;
 
@@ -12,7 +11,7 @@ public class TouristRepository {
 
     final private List<String> attractionCities = new ArrayList<>(List.of(
             "København", "Odense", "Aarhus", "Roskilde",
-            "Aarhus", "Aalborg", "Sønderborg", "Jelling"
+            "Aarhus", "Aalborg", "Sønderborg", "Jelling", "Randers", "Billund"
     ));
 
     private List<TouristAttraction> touristAttractionList = new ArrayList<>(List.of(
