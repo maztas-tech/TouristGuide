@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import touristguide.model.TouristAttraction;
 import touristguide.service.TouristService;
 
+import java.util.ArrayList;
+
 @Controller
 @RequestMapping("attractions")
 public class TouristController {
@@ -53,6 +55,8 @@ public class TouristController {
      */
     @GetMapping("/{name}/updateAttraction")
     public String updateAttration(@PathVariable("name") String name, Model model){
+        TouristAttraction abc = touristService.getTouristAttraction(name);
+
         model.addAttribute("updateObject", touristService.getTouristAttraction(name));
         model.addAttribute("attractionTags", touristService.getAttractionTags());
         return "updateAttraction";

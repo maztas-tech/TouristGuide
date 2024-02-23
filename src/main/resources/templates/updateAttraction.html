@@ -16,7 +16,7 @@
             <input id="updateCity" type="text" name="city" th:value="${updateObject.city}">
         </p>
         <div th:each="tag : ${attractionTags}">
-            <input id="tagsAttraction" type="checkbox" name="tagsList" th:value="${updateObject.tagsList}">
+            <input id="tagsAttraction" type="checkbox"  th:field="*{tagsList}" th:value="${tag}">
             <label for="tagsAttraction" th:text="${tag}">Tags:</label><br />
         </div>
         <input type="submit" value="Update attraction">

@@ -18,6 +18,8 @@ public class TouristRepository {
             "Børnevenlig", "Gratis", "Gebyr", "Kunst", "Natur"
     ));
 
+    final private List<String> emptyAttractionTags = new ArrayList<>();
+
     private List<TouristAttraction> touristAttractionList = new ArrayList<>(List.of(
             new TouristAttraction("SMK", "Statens Museum for kunst","København",List.of(
                     "Historie", "Kunst", "Litteratur"

@@ -8,7 +8,7 @@ public class TouristAttraction {
     private String city;
     private List<String> tagsList;
 
-    public TouristAttraction(String name, String description, String city, List<String> tagsList){
+    public TouristAttraction(String name, String description, String city, List<String> tagsList){ 
         this.name = name;
         this.description = description;
         this.city = city;
