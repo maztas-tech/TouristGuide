@@ -42,16 +42,25 @@ public class TouristController {
     }
 
     @GetMapping("/{name}/delete")
-    public String deleteAttraction(@PathVariable("name") TouristAttraction name, Model model){
-        model.addAttribute("delete", touristService.deleteTouristAttraction(name));
+    public String deleteAttraction(@PathVariable("name") String name){
+        touristService.deleteTouristAttraction(name);
         return "redirect:/attractions";
     }
-
+    /*
+        - GetMapping -> få mig herhen
+        - Alle metoder i getmapping -> prop de her værdier på den side jeg gerne vil til
+        - returner mig til siden som er skrevet i string værdien der også er defineret som html siden
+     */
     @GetMapping("/{name}/updateAttraction")
-    public String updateAttration(){
+    public String updateAttration(@PathVariable("name") String name, Model model){
+        model.addAttribute("updateObject", touristService.getTouristAttraction(name));
+        model.addAttribute("attractionTags", touristService.getAttractionTags());
         return "updateAttraction";
     }
 
-
-
+    @PostMapping("/updateAttraction")
+    public String updatedAttraction(@ModelAttribute TouristAttraction updatedTouristAttraction){
+        touristService.updateAttraction(updatedTouristAttraction.getName(), updatedTouristAttraction);
+        return "redirect:/attractions";
+    }
 }

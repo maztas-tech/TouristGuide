@@ -38,7 +38,10 @@
                             </a>
                         </td>
                         <td>
-                            <input type="button" value="Delete">
+                            <a th:href="@{'attractions/' + ${attraction.name} + '/delete'}">
+                                <input type="button" value="Delete">
+                            </a>
+
                         </td>
                     </tr>
                 </tbody>
