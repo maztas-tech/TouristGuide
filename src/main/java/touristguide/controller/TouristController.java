@@ -16,18 +16,24 @@ public class TouristController {
     public TouristController(TouristService touristService){
         this.touristService = touristService;
     }
-
+    /*
+    Print out the tourist attractions
+     */
     @GetMapping("")
     public String getTouristAttractions(Model model){
         model.addAttribute("attractions", touristService.getTouristAttractionList());
         return "attractionList";
     }
 
+    /*
+    Getting the tags for the individual attractions.
+     */
     @GetMapping("/{name}/tags")
     public String tags(@PathVariable("name") String name, Model model){
         model.addAttribute("tags", touristService.attractionTagsList(name));
         return "tags";
     }
+
 
     @GetMapping("/add")
     public String addAttraction(Model model){
