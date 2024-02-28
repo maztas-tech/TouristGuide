@@ -50,18 +50,14 @@ class TouristRepositoryTest {
     @Test
     void getAttractionTags() {
         //Arrange
-        List<String> getTags = touristRepository.getAttractionTags();
-        String tagName = "Gebyr";
-        boolean doesExist = false;
+
         //Act
-        for (String touristAttractionTags : getTags){
-            if (tagName.equalsIgnoreCase(touristAttractionTags)){
-                doesExist = true;
-                break;
-            }
-        }
+        List<String> actualTags = touristRepository.getAttractionTags();
         //Assert
-        assertTrue(doesExist);
+        List<String> expectedTags = new ArrayList<>(List.of(
+                "Børnevenlig", "Gratis",
+                "Gebyr", "Kunst", "Natur"));
+        assertEquals(expectedTags, actualTags);
     }
 
     @Test
