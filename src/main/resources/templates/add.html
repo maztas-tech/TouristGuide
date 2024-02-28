@@ -11,11 +11,11 @@
         <form action="/attractions/add" method="post" th:object="${attractionObject}">
             <p>
                 <label for="nameOfAttraction">Name of attraction:</label>
-                <input id="nameOfAttraction" type="text" name="name" th:field="*{name}"/>
+                <input id="nameOfAttraction" type="text" name="name" th:field="*{name}" required/>
             </p>
             <p>
                 <label for="descriptionOfAttraction" >Description of attraction:</label>
-                <input id="descriptionOfAttraction" type="text" name="description" th:field="*{description}">
+                <input id="descriptionOfAttraction" type="text" name="description" th:field="*{description}" required>
             </p>
             <p>
                 <label for="cityOfAttractionSelection">City:</label>
@@ -24,7 +24,7 @@
                 </select>
             </p>
             <div th:each="tag : ${attractionTags}">
-                <input id="tagsAttraction" type="checkbox"  th:field="*{tagsList}" th:value="${tag}">
+                <input id="tagsAttraction" type="checkbox"  th:field="*{tagsList}" th:value="${tag}" required>
                 <label for="tagsAttraction" th:text="${tag}">Tags:</label><br />
             </div>
             <input type="submit" value="Add attraction">
