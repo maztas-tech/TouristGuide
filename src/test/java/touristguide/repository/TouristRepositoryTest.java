@@ -51,7 +51,7 @@ class TouristRepositoryTest {
     void getAttractionTags() {
         //Arrange
         List<String> getTags = touristRepository.getAttractionTags();
-        String tagName = "Gratis";
+        String tagName = "meow meow";
         boolean doesExist = false;
         //Act
         for (String touristAttractionTags : getTags){
