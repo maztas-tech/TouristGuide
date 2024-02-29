@@ -30,6 +30,7 @@ class TouristRepositoryTest {
 
     }
 
+
     @Test
     void getAttractionCities() {
         //Arrange
@@ -62,10 +63,34 @@ class TouristRepositoryTest {
 
     @Test
     void attractionTagsList() {
+        //Arrange
+
+        //Act
+        //Assert
     }
 
     @Test
     void addTouristAttraction() {
+        //Arrange
+        List<TouristAttraction> sizeOfList;
+
+        TouristAttraction addTouristAttraction = new TouristAttraction("Jellinge sten", "Vikinge historie", "Jelling", List.of(
+                "Natur", "Gratis", "Børnevenlig"
+        ));
+
+        TouristAttraction addTouristAttraction2 = new TouristAttraction("Havfruen", "Brugt som politisk budskab", "København", List.of(
+                "Kunst", "Gratis", "Politik"
+        ));
+
+        TouristAttraction addTouristAttraction3 = new TouristAttraction("Amalienborg", "De kongelige", "København", List.of(
+                "Gratis", "Politik", "Historie"
+        ));
+        //Act
+        touristRepository.addTouristAttraction(addTouristAttraction);
+        touristRepository.addTouristAttraction(addTouristAttraction2);
+        sizeOfList = touristRepository.addTouristAttraction(addTouristAttraction3);
+        //Assert
+        assertEquals(7, sizeOfList.size());
     }
 
     @Test
