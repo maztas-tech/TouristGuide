@@ -72,8 +72,6 @@ class TouristRepositoryTest {
     @Test
     void addTouristAttraction() {
         //Arrange
-        List<TouristAttraction> sizeOfList;
-
         TouristAttraction addTouristAttraction = new TouristAttraction("Jellinge sten", "Vikinge historie", "Jelling", List.of(
                 "Natur", "Gratis", "Børnevenlig"
         ));
@@ -86,11 +84,11 @@ class TouristRepositoryTest {
                 "Gratis", "Politik", "Historie"
         ));
         //Act
-        touristRepository.addTouristAttraction(addTouristAttraction);
-        touristRepository.addTouristAttraction(addTouristAttraction2);
-        sizeOfList = touristRepository.addTouristAttraction(addTouristAttraction3);
+        touristRepository.addTouristAttraction(addTouristAttraction, addTouristAttraction2, addTouristAttraction3);
+        //touristRepository.addTouristAttraction(addTouristAttraction2);
+        //touristRepository.addTouristAttraction(addTouristAttraction3);
         //Assert
-        assertEquals(7, sizeOfList.size());
+        assertEquals(7, touristRepository.getTouristAttractionList().size());
     }
 
     @Test

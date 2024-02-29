@@ -22,8 +22,8 @@ public class TouristService {
         return touristRepository.attractionTagsList(touristAttractionName);
     }
 
-    public List<TouristAttraction> addTouristAttraction(TouristAttraction touristAttraction){
-        return touristRepository.addTouristAttraction(touristAttraction);
+    public void addTouristAttraction(TouristAttraction touristAttraction){
+        touristRepository.addTouristAttraction(touristAttraction);
     }
 
     public List<String> getAttractionCities(){
@@ -34,12 +34,12 @@ public class TouristService {
         return touristRepository.getAttractionTags();
     }
 
-    public List<TouristAttraction> deleteTouristAttraction(String name){
-        return touristRepository.deleteTouristAttraction(name);
+    public void deleteTouristAttraction(String name){
+        touristRepository.deleteTouristAttraction(name);
     }
 
-    public TouristAttraction updateAttraction(String name, TouristAttraction touristAttraction){
-        return touristRepository.updateAttraction(name, touristAttraction);
+    public void updateAttraction(String name, TouristAttraction touristAttraction){
+        touristRepository.updateAttraction(name, touristAttraction);
     }
 
     public TouristAttraction getTouristAttraction(String name){

@@ -4,6 +4,8 @@ import org.springframework.stereotype.Repository;
 import touristguide.model.TouristAttraction;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -55,11 +57,12 @@ public class TouristRepository {
         return null;
     }
 
-    public List<TouristAttraction> addTouristAttraction(TouristAttraction touristAttraction){
-        touristAttractionList.add(touristAttraction);
-        return touristAttractionList;
+    public void addTouristAttraction(TouristAttraction... touristAttractions){
+        touristAttractionList.addAll(Arrays.asList(touristAttractions));
+
     }
 
+    //Ændre til void
     public List<TouristAttraction> deleteTouristAttraction(String name){
         for (TouristAttraction attraction: touristAttractionList){
             if (attraction.getName().contains(name)){
@@ -70,17 +73,15 @@ public class TouristRepository {
         return null;
     }
 
-    public TouristAttraction updateAttraction(String name, TouristAttraction updatedAttraction){
+    public void updateAttraction(String name, TouristAttraction updatedAttraction){
         for (TouristAttraction attraction: touristAttractionList){
             if (attraction.getName().contains(name)){
                 attraction.setDescription(updatedAttraction.getDescription());
                 attraction.setCity(updatedAttraction.getCity());
                 attraction.setTagsList(updatedAttraction.getTagsList());
 
-                return attraction;
             }
         }
-        return null;
     }
 
     public TouristAttraction getTouristAttraction(String name){
