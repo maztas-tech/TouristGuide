@@ -20,7 +20,7 @@ class TouristRepositoryTest {
         touristAttraction = new TouristAttraction();
     }
     @Test
-    void getTouristAttractionList() {
+    void touristAttractionListSize() {
         //Arrange
         List<TouristAttraction> sizeOfList = touristRepository.getTouristAttractionList();
         //Act
@@ -50,13 +50,13 @@ class TouristRepositoryTest {
     @Test
     void getAttractionTags() {
         //Arrange
-
-        //Act
         List<String> actualTags = touristRepository.getAttractionTags();
-        //Assert
+        //Act
         List<String> expectedTags = new ArrayList<>(List.of(
                 "Børnevenlig", "Gratis",
                 "Gebyr", "Kunst", "Natur"));
+        //Assert
+
         assertEquals(expectedTags, actualTags);
     }
 
