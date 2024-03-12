@@ -3,6 +3,7 @@ package touristguide.service;
 import org.springframework.stereotype.Service;
 import touristguide.model.TouristAttraction;
 import touristguide.repository.TouristRepository;
+import touristguide.repository.TouristRepository_DB;
 
 import java.util.List;
 
@@ -10,9 +11,11 @@ import java.util.List;
 public class TouristService {
 
     private TouristRepository touristRepository;
+    private TouristRepository_DB touristRepository_db;
 
-    public TouristService(TouristRepository touristRepository){
+    public TouristService(TouristRepository touristRepository, TouristRepository_DB touristRepository_db){
         this.touristRepository = touristRepository;
+        this.touristRepository_db = touristRepository_db;
     }
 
     public List<TouristAttraction> getTouristAttractionList(){
@@ -44,5 +47,9 @@ public class TouristService {
 
     public TouristAttraction getTouristAttraction(String name){
         return touristRepository.getTouristAttraction(name);
+    }
+
+    public List<TouristAttraction> getTouristAttractionDB(){
+        return touristRepository_db.getAllTouristAttractions();
     }
 }

@@ -1,5 +1,7 @@
 package touristguide.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -7,6 +9,7 @@ import touristguide.model.TouristAttraction;
 import touristguide.service.TouristService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("attractions")
@@ -19,9 +22,17 @@ public class TouristController {
     /*
     Print out the tourist attractions
      */
+    /*
+    @GetMapping("attractionsDB")
+    public ResponseEntity<List<TouristAttraction>> getTouristAttractionDB(Model model){
+        model.addAttribute("attractionDB", touristService.getTouristAttractionDB());
+        return new ResponseEntity<>(touristService.getTouristAttractionDB(), HttpStatus.OK);
+    }
+
+     */
     @GetMapping("")
     public String getTouristAttractions(Model model){
-        model.addAttribute("attractions", touristService.getTouristAttractionList());
+        model.addAttribute("attractions", touristService.getTouristAttractionDB());
         return "attractionList";
     }
 
