@@ -30,6 +30,8 @@ public class TouristController {
     }
 
      */
+
+
     @GetMapping("")
     public String getTouristAttractions(Model model){
         model.addAttribute("attractions", touristService.getTouristAttractionDB());
