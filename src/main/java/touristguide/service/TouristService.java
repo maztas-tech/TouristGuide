@@ -48,8 +48,12 @@ public class TouristService {
     public TouristAttraction getTouristAttraction(String name){
         return touristRepository.getTouristAttraction(name);
     }
+    //-----------------------------------------------------------------------------------------
 
     public List<TouristAttraction> getTouristAttractionDB(){
         return touristRepository_db.getAllTouristAttractions();
+    }
+    public List<String> getTouristAttractionTagsDB(String name){
+        return touristRepository_db.attractionTagListDB(name);
     }
 }
