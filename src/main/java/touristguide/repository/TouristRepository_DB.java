@@ -25,8 +25,9 @@ public class TouristRepository_DB {
     //Read all objects in the database
     public List<TouristAttraction> getAllTouristAttractions(){
         List<TouristAttraction> attractions = new ArrayList<>();
+        String SQL = "SELECT * FROM tourist_attraction;";
         try (Connection conn = DriverManager.getConnection(db_url, uid, pwd)){
-            String SQL = "SELECT * FROM tourist_attraction;";
+            //String SQL = "SELECT * FROM tourist_attraction;";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(SQL);
             while(rs.next()){
