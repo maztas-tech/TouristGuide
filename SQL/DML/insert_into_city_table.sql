@@ -1,0 +1,23 @@
+INSERT INTO city (cityName)
+VALUES
+('København'),
+('Århus'),
+('Odense'),
+('Aalborg'),
+('Esbjerg'),
+('Randers'),
+('Kolding'),
+('Horsens'),
+('Vejle'),
+('Roskilde'),
+('Herning'),
+('Silkeborg'),
+('Næstved'),
+('Greve'),
+('Tårnby'),
+('Frederiksberg'),
+('Ballerup'),
+('Rødovre'),
+('Viborg'),
+('Køge'),
+('Billund')
