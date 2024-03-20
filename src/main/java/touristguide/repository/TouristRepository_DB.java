@@ -44,10 +44,7 @@ public class TouristRepository_DB {
 
     public List<String> attractionTagListDB(String name){
         List<String> tags = new ArrayList<>();
-        String SQL = "SELECT tag.tagName FROM tourist_attraction " +
-                "JOIN tag " +
-                "JOIN tourist_attraction_tag " +
-                "ON tag.tagID = tourist_attraction_tag.tagID AND tourist_attraction.touristID = tourist_attraction_tag.touristID AND tourist_attraction.name = ?";
+        String SQL = "SELECT tag.tagName FROM tourist_attraction JOIN tourist_attraction_tag ON tourist_attraction.touristID = tourist_attraction_tag.touristID JOIN tag ON tourist_attraction_tag.tagID = tag.tagID WHERE tourist_attraction.name = ?;";
 
         try(Connection conn = DriverManager.getConnection(db_url, uid, pwd)) {
             PreparedStatement ps = conn.prepareStatement(SQL);
