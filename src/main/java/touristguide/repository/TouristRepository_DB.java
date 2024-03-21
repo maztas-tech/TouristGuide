@@ -25,7 +25,7 @@ public class TouristRepository_DB {
     //Read all objects in the database
     public List<TouristAttraction> getAllTouristAttractions(){
         List<TouristAttraction> attractions = new ArrayList<>();
-        String SQL = "SELECT * FROM tourist_attraction;";
+        String SQL = "SELECT name, description, cityName, GROUP_CONCAT(tagName) AS tags FROM tourist_attraction JOIN city ON tourist_attraction.cityID = city.cityID JOIN tourist_attraction_tag ON tourist_attraction.touristID = tourist_attraction_tag.touristID JOIN tag ON tourist_attraction_tag.tagID = tag.tagID GROUP BY tourist_attraction.name, tourist_attraction.description, city.cityName;";
         try (Connection conn = DriverManager.getConnection(db_url, uid, pwd)){
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(SQL);
@@ -33,7 +33,7 @@ public class TouristRepository_DB {
                 attractions.add(new TouristAttraction(
                         rs.getString("name"),
                         rs.getString("description"),
-                        rs.getString("city"),
+                        rs.getString("cityName"),
                         List.of(rs.getString(4))));
             }
         }catch (SQLException e){

@@ -2,13 +2,21 @@ CREATE SCHEMA if not exists tourist_guide_db;
 
 USE tourist_guide_db;
 
+CREATE TABLE city(
+                     cityID INT auto_increment,
+                     cityName VARCHAR(50) NOT NULL unique,
+                     primary key(cityID)
+);
+
 CREATE TABLE tourist_attraction(
                                    touristID INT auto_increment,
                                    name VARCHAR(50) NOT NULL,
                                    description VARCHAR(255) NOT NULL,
-                                   city VARCHAR(25) NOT NULL,
-                                   primary key(touristID)
+                                   cityID INT,
+                                   primary key(touristID),
+                                   foreign key(cityID) references city(cityID)
 );
+
 
 CREATE TABLE tag(
                     tagID INT auto_increment,
@@ -24,12 +32,14 @@ CREATE TABLE tourist_attraction_tag(
 
 );
 
+
+
 -- Inserting test data into tourist_attraction table
-INSERT INTO tourist_attraction (name, description, city)
+INSERT INTO tourist_attraction (name, description)
 VALUES
-    ('Jellinge sten_H2', 'Vikinge historie_H2', 'Jellinge_H2'),
-    ('Rundetårn_H2', 'Overblik over København_H2', 'København_H2'),
-    ('Den lille havfrue_H2', 'Demonstrations plads_H2', 'København_H2');
+    ('Jellinge sten_H2', 'Vikinge historie_H2'),
+    ('Rundetårn_H2', 'Overblik over København_H2'),
+    ('Den lille havfrue_H2', 'Demonstrations plads_H2');
 
 
 
@@ -54,5 +64,19 @@ VALUES
     (1, 6),
     (2, 2),
     (2, 5),
-    (2, 3);
+    (2, 3),
+    (3, 1),
+    (3, 4);
 
+
+INSERT INTO city(cityName)
+VALUES
+    ('København'),
+    ('Jellinge'),
+    ('Roskilde'),
+    ('Aarhus');
+
+
+UPDATE tourist_attraction SET cityID = 2 WHERE name = 'Jellinge sten_H2';
+UPDATE tourist_attraction SET cityID = 1 WHERE name = 'Rundetårn_H2';
+UPDATE tourist_attraction SET cityID = 1 WHERE name = 'Den lille havfrue_H2';
