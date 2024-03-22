@@ -84,4 +84,24 @@ public class TouristRepository_DB {
             throw new RuntimeException(e);
         }
     }
+
+    public void addAttraction(TouristAttraction touristAttraction){
+
+
+        String sql = "insert into tourist_attraction(name,description,cityid) values (?,?,?);";
+        try (Connection conn = DriverManager.getConnection(db_url,uid,pwd)){
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, touristAttraction.getName());
+            ps.setString(2, touristAttraction.getDescription());
+            ps.setString(3, touristAttraction.getCity());
+            ps.executeUpdate();
+
+            String sql2="update tourist_attraction-tag set tagid=? where tourist_attraction.name='?';";
+            conn.prepareStatement(sql2);
+            ps.setString(1,touristAttraction.getTagsList().toString());
+            ps.setString(2,touristAttraction.getName());
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
 }
