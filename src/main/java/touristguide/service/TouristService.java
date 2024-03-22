@@ -56,4 +56,8 @@ public class TouristService {
     public List<String> getTouristAttractionTagsDB(String name){
         return touristRepository_db.attractionTagListDB(name);
     }
+
+    public void deleteAttractionDB(String name){
+        touristRepository_db.deleteAttraction(name);
+    }
 }

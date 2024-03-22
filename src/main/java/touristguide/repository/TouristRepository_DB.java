@@ -58,4 +58,30 @@ public class TouristRepository_DB {
         }
         return tags;
     }
+
+    public void deleteAttraction(String name){
+        try(Connection conn = DriverManager.getConnection(db_url, uid, pwd)) {
+            String SQL = "SELECT touristID FROM tourist_attraction WHERE name = ?";
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+            int atID = 0;
+
+            while(rs.next()) {
+                atID = rs.getInt(1);
+            }
+
+            String SQLChild = "DELETE FROM tourist_attraction_tag WHERE touristID = ?";
+            ps = conn.prepareStatement(SQLChild);
+            ps.setInt(1, atID);
+            ps.executeUpdate();
+
+            String SQLParent = "DELETE FROM tourist_attraction WHERE touristID = ?";
+            conn.prepareStatement(SQLParent);
+            ps.setInt(1, atID);
+            ps.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
 }
