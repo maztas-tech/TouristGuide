@@ -13,11 +13,7 @@ VALUES
 ('Herning'),
 ('Silkeborg'),
 ('Næstved'),
-('Greve'),
-('Tårnby'),
-('Frederiksberg'),
-('Ballerup'),
-('Rødovre'),
-('Viborg'),
 ('Køge'),
-('Billund')
+('Helsingør'),
+('Billund'),
+('Kværndrup');
