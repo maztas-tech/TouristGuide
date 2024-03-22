@@ -60,4 +60,8 @@ public class TouristService {
     public void deleteAttractionDB(String name){
         touristRepository_db.deleteAttraction(name);
     }
+
+    public void addAttractionDB(TouristAttraction touristAttraction){
+        touristRepository_db.addAttractionDB(touristAttraction);
+    }
 }

@@ -85,7 +85,7 @@ public class TouristRepository_DB {
         }
     }
 
-    public void addAttraction(TouristAttraction touristAttraction){
+    public void addAttractionDB(TouristAttraction touristAttraction){
 
 
         String sql = "insert into tourist_attraction(name,description,cityid) values (?,?,?);";
