@@ -68,7 +68,8 @@ VALUES
     (2, 5),
     (2, 3),
     (3, 1),
-    (3, 4);
+    (3, 4),
+    (4, 1);
 
 
 INSERT INTO city(cityName)
@@ -82,3 +83,4 @@ VALUES
 UPDATE tourist_attraction SET cityID = 2 WHERE name = 'Jellinge sten_H2';
 UPDATE tourist_attraction SET cityID = 1 WHERE name = 'Rundetårn_H2';
 UPDATE tourist_attraction SET cityID = 1 WHERE name = 'Den lille havfrue_H2';
+UPDATE tourist_attraction SET cityID = 1 WHERE name = 'Tivoli_H2';
