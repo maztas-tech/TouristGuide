@@ -39,7 +39,9 @@ INSERT INTO tourist_attraction (name, description)
 VALUES
     ('Jellinge sten_H2', 'Vikinge historie_H2'),
     ('Rundetårn_H2', 'Overblik over København_H2'),
-    ('Den lille havfrue_H2', 'Demonstrations plads_H2');
+    ('Den lille havfrue_H2', 'Demonstrations plads_H2'),
+    ('Tivoli_H2', 'Forlystelse_H2'),
+    ('Kronborg_slot_H2', 'Demonstrations plads_H2');
 
 
 
