@@ -84,7 +84,7 @@ public class TouristRepository_DB {
             throw new RuntimeException(e);
         }
     }
-
+    /*
     public void addAttractionDB(TouristAttraction touristAttraction){
 
 
@@ -96,11 +96,53 @@ public class TouristRepository_DB {
             ps.setString(3, touristAttraction.getCity());
             ps.executeUpdate();
 
-            String sql2="UPDATE tourist_attraction-tag SET tagid=? WHERE tourist_attraction.name='?';";
+            String sql2="UPDATE tourist_attraction-tag SET tagid=? WHERE tourist_attraction.name=?;";
             conn.prepareStatement(sql2);
             ps.setString(1,touristAttraction.getTagsList().toString());
             ps.setString(2,touristAttraction.getName());
         }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+     */
+    public void addAttractionDB(TouristAttraction touristAttraction) {
+        int cityid=0;
+        int touristID=0;
+        String SQL1="SELECT cityID from city where cityName = ? ;";
+
+        String sql2 = "INSERT INTO tourist_attraction (name, description, cityID) VALUES (?, ?, ?);";
+
+        String sql3 = "SELECT touristID FROM tourist_attraction WHERE name=?; ";
+
+        String sql4 = "UPDATE tourist_attraction_tag SET tagID = ? WHERE touristID = ?;";
+
+        try (Connection conn = DriverManager.getConnection(db_url, uid, pwd)) {
+            PreparedStatement ps = conn.prepareStatement(SQL1);
+            ps.setString(1, touristAttraction.getCity());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                cityid=rs.getInt(1);
+            }
+            PreparedStatement ps2 = conn.prepareStatement(sql2);
+            ps2.setString(1, touristAttraction.getName());
+            ps2.setString(2, touristAttraction.getDescription());
+            ps2.setInt(3,cityid);
+            ps2.executeUpdate();
+
+            PreparedStatement ps3 = conn.prepareStatement(sql3);
+            ps3.setString(1,touristAttraction.getName());
+            ResultSet rs3 = ps3.executeQuery();
+            while (rs3.next()){
+                touristID=rs3.getInt(1);
+            }
+
+            PreparedStatement ps4 = conn.prepareStatement(sql4);
+            ps4.setString(1, touristAttraction.getTagsList().toString());
+            ps4.setInt(2, touristID);
+            ps4.executeUpdate();
+
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
