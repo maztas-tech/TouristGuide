@@ -106,18 +106,21 @@ public class TouristRepository_DB {
     }
 
      */
-    public void addAttractionDB(TouristAttraction touristAttraction) {
-        int cityid=0;
-        int touristID=0;
-        String SQL1="SELECT cityID from city where cityName = ? ;";
-
-        String sql2 = "INSERT INTO tourist_attraction (name, description, cityID) VALUES (?, ?, ?);";
-
-        String sql3 = "SELECT touristID FROM tourist_attraction WHERE name=?; ";
-
-        String sql4 = "UPDATE tourist_attraction_tag SET tagID = ? WHERE touristID = ?;";
+    public List<TouristAttraction> addAttractionDB(TouristAttraction touristAttraction) {
+        List<TouristAttraction> addTouristAttraction = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(db_url, uid, pwd)) {
+            int cityid=0;
+            int touristID=0;
+            String SQL1="SELECT cityID from city where cityName = ? ;";
+
+            String sql2 = "INSERT INTO tourist_attraction (name, description, cityID) VALUES (?, ?, ?);";
+
+            String sql3 = "SELECT touristID FROM tourist_attraction WHERE name=?; ";
+
+            String sql4 = "UPDATE tourist_attraction_tag SET tagID = ? WHERE touristID = ?;";
+
+
             PreparedStatement ps = conn.prepareStatement(SQL1);
             ps.setString(1, touristAttraction.getCity());
             ResultSet rs = ps.executeQuery();
@@ -142,9 +145,12 @@ public class TouristRepository_DB {
             ps4.setInt(2, touristID);
             ps4.executeUpdate();
 
+            addTouristAttraction.add(touristAttraction);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return addTouristAttraction;
     }
 
 
