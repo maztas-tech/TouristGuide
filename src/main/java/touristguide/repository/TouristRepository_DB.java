@@ -88,7 +88,7 @@ public class TouristRepository_DB {
     public void addAttractionDB(TouristAttraction touristAttraction){
 
 
-        String sql = "insert into tourist_attraction(name,description,cityid) values (?,?,?);";
+        String sql = "INSERT INTO tourist_attraction(name,description,cityid) VALUES (?,?,?);";
         try (Connection conn = DriverManager.getConnection(db_url,uid,pwd)){
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, touristAttraction.getName());
@@ -96,12 +96,45 @@ public class TouristRepository_DB {
             ps.setString(3, touristAttraction.getCity());
             ps.executeUpdate();
 
-            String sql2="update tourist_attraction-tag set tagid=? where tourist_attraction.name='?';";
+            String sql2="UPDATE tourist_attraction-tag SET tagid=? WHERE tourist_attraction.name='?';";
             conn.prepareStatement(sql2);
             ps.setString(1,touristAttraction.getTagsList().toString());
             ps.setString(2,touristAttraction.getName());
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
+    }
+
+
+    public List<String> getAttractionTagsDB(){
+        List<String> tags = new ArrayList<>();
+        try(Connection conn = DriverManager.getConnection(db_url,uid,pwd)) {
+            String SQL = "SELECT tagName FROM tag";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(SQL);
+            while (rs.next()){
+                tags.add(rs.getString("tagName"));
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+
+        return tags;
+    }
+
+    public List<String> getAttractionCitiesDB(){
+        List<String> cities = new ArrayList<>();
+        try(Connection conn = DriverManager.getConnection(db_url,uid,pwd)) {
+            String SQL = "SELECT cityName FROM city";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(SQL);
+            while (rs.next()){
+                cities.add(rs.getString("cityName"));
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+
+        return cities;
     }
 }

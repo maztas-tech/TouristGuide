@@ -64,4 +64,12 @@ public class TouristService {
     public void addAttractionDB(TouristAttraction touristAttraction){
         touristRepository_db.addAttractionDB(touristAttraction);
     }
+
+    public List<String> getAttractionTagsDB(){
+        return touristRepository_db.getAttractionTagsDB();
+    }
+
+    public List<String> getAttractionCitiesDB(){
+        return touristRepository_db.getAttractionCitiesDB();
+    }
 }
